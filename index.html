@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Accounting Cycle Practice – Beck Equipment Repair</title>
+
+  <!-- Layout and visual styling for the Accounting Cycle Practice app -->
+  <link rel="stylesheet" href="ACStyles.css" />
+</head>
+<body>
+  <!-- Login overlay: collect student name and password before starting the cycle -->
+  <div id="login-overlay" class="login-overlay">
+    <div class="login-card">
+      <h1 id="login-title" class="login-title"></h1>
+      <h2 id="login-subtitle" class="login-subtitle"></h2>
+      <p id="login-prompt" class="login-prompt"></p>
+
+      <div class="login-field">
+        <label for="student-name" class="login-label">Name:</label>
+        <input
+          type="text"
+          id="student-name"
+          class="login-input"
+          placeholder="Your name (optional)"
+        />
+      </div>
+
+      <div class="login-field">
+        <label for="password-input" class="login-label">Password:</label>
+        <input
+          type="password"
+          id="password-input"
+          class="login-input"
+          placeholder="Enter password"
+        />
+        <div id="login-error" class="login-error"></div>
+      </div>
+
+      <button id="login-btn" class="login-button">
+        <span id="login-button-label"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Main Accounting Cycle practice interface (shown after login or if login disabled) -->
+  <div id="main-app" class="main-app hidden">
+    <div class="container">
+      <!-- Titles supplied by ACConfig.js (exerciseConfig.appTitle, .subtitle) -->
+      <h1 id="app-title"></h1>
+      <div id="app-subtitle" class="subtitle"></div>
+
+      <!-- Guide to sections of the Accounting Cycle (regular, adjusting, closing) -->
+      <div id="section-guide" class="section-guide">
+        <strong>Set T:</strong> Regular transactions (Q1–10)&nbsp; 
+        <strong>Set A:</strong> Adjusting entries (Q21–24)&nbsp;
+        <strong>Set C:</strong> Closing entries (Q31–33)<br><br>
+      </div>
+
+      <!-- Current transaction / event description for Beck Equipment Repair -->
+      <div id="tx-title" class="tx-title"></div>
+      <div id="tx-description" class="tx-description"></div>
+
+      <!-- Journal entry input for each step of the November 2025 accounting cycle.
+           Use the 3-digit account codes from the chart of accounts. -->
+      <table class="journal-table">
+        <thead>
+          <tr>
+            <th style="width:14%;">Code</th>
+            <th style="width:40%;">Account</th>
+            <th style="width:23%;">Debit</th>
+            <th style="width:23%;">Credit</th>
+          </tr>
+        </thead>
+        <tbody id="journal-rows"></tbody>
+      </table>
+
+      <button id="add-row-btn" class="secondary">Add row</button>
+
+      <!-- For items that do not require a journal entry in this step of the cycle -->
+      <label id="no-entry-wrapper" class="no-entry-wrapper">
+        <input type="checkbox" id="no-entry-checkbox" />
+        No journal entry is required for this item.
+      </label>
+
+      <!-- Navigation and accounting cycle tools -->
+      <div class="controls">
+        <button id="prev-btn" class="secondary">Previous</button>
+        <button id="check-btn" class="primary">Submit journal entry</button>
+        <button id="next-btn" class="secondary">Next</button>
+        <button id="clear-btn" class="secondary">Clear entry</button>
+
+        <!-- Reference: chart of accounts with 3-digit codes -->
+        <button id="open-chart-btn" class="secondary">Open chart of accounts</button>
+
+        <!-- Trial balances at key stages of the November 2025 accounting cycle -->
+        <button id="tb-unadjusted-btn" class="secondary">Unadjusted TB</button>
+        <button id="tb-adjusted-btn" class="secondary">Adjusted TB</button>
+        <button id="tb-postclosing-btn" class="secondary">Post-closing TB</button>
+
+        <!-- General ledger view to trace postings across the cycle -->
+        <button id="ledger-btn" class="secondary">View general ledger</button>
+        <button id="reset-all-btn" class="secondary">Start over</button>
+      </div>
+
+      <!-- Immediate feedback on the current journal entry -->
+      <div id="feedback" class="feedback"></div>
+
+      <!-- Running score / progress across the Accounting Cycle set -->
+      <div id="score-summary" class="score-summary"></div>
+
+      <!-- Footer text supplied by ACConfig.js (exerciseConfig.footerText, .copyright) -->
+      <footer id="app-footer" class="app-footer"></footer>
+    </div>
+  </div>
+
+  <!-- App configuration and accounting data (settings, chart of accounts, questions) -->
+  <script src="ACConfig.js"></script>
+  <script src="ACChartOfAccounts.js"></script>
+  <script src="ACQuestions.js"></script>
+
+  <!-- Core app logic: navigation, grading, and UI behavior for the Accounting Cycle practice -->
+  <script src="ACApp.js"></script>
+</body>
+</html>

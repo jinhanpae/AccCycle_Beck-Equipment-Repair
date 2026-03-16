@@ -1,0 +1,345 @@
+/* ACStyles.css
+   Visual styling for the Accounting Cycle Practice app:
+   November transactions, adjusting/closing entries, TBs, and ledger views.
+*/
+
+/* Base layout */
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: #0f172a;
+  margin: 0;
+  padding: 32px 16px;
+}
+
+.hidden {
+  display: none;
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 28px 32px 24px;
+  border-radius: 18px;
+  box-shadow:
+    0 24px 60px rgba(15, 23, 42, 0.35),
+    0 0 0 1px rgba(148, 163, 184, 0.35);
+  border: 1px solid #e5e7eb;
+}
+
+/* Headings and text */
+
+h1 {
+  margin: 0 0 4px;
+  font-size: 24px;
+  text-align: center;
+  color: #0f172a;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 16px;
+  color: #6b7280;
+  margin-bottom: 18px;
+  font-weight: 500;
+}
+
+.tx-title {
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #111827;
+}
+
+.tx-description {
+  font-size: 14px;
+  color: #374151;
+  margin-bottom: 14px;
+  white-space: pre-line;
+}
+
+/* Login overlay: gate to start the Accounting Cycle practice */
+
+.login-overlay {
+  position: fixed;
+  inset: 0;
+  background: #0f172a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.login-card {
+  background: #ffffff;
+  padding: 28px 32px 24px;
+  border-radius: 18px;
+  box-shadow:
+    0 24px 60px rgba(15, 23, 42, 0.35),
+    0 0 0 1px rgba(148, 163, 184, 0.35);
+  border: 1px solid #e5e7eb;
+  max-width: 400px;
+  width: 90%;
+  box-sizing: border-box;
+}
+
+.login-title {
+  margin: 0 0 8px;
+  font-size: 22px;
+  text-align: center;
+  color: #0f172a;
+}
+
+.login-subtitle {
+  text-align: center;
+  font-size: 15px;
+  color: #6b7280;
+  margin: 0 0 18px;
+}
+
+.login-prompt {
+  text-align: center;
+  font-size: 13px;
+  color: #6b7280;
+  margin: 0 0 16px;
+  line-height: 1.4;
+}
+
+.login-field {
+  margin-bottom: 18px;
+}
+
+.login-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 4px;
+}
+
+.login-input {
+  width: 100%;
+  padding: 8px 10px;
+  font-size: 13px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  box-sizing: border-box;
+}
+
+.login-error {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #b91c1c;
+  min-height: 16px;
+}
+
+.login-button {
+  width: 100%;
+  padding: 9px 14px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 13px;
+  cursor: pointer;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #f9fafb;
+  font-weight: 600;
+}
+
+/* Journal entry table for each step in the November 2025 accounting cycle */
+
+.journal-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 8px;
+}
+
+.journal-table th,
+.journal-table td {
+  border: 1px solid #e5e7eb;
+  padding: 6px 8px;
+  font-size: 13px;
+}
+
+.journal-table th {
+  background: #f9fafb;
+  text-align: left;
+}
+
+.journal-table input {
+  width: 100%;
+  border: none;
+  font-size: 13px;
+  padding: 4px;
+  outline: none;
+}
+
+/* Controls & buttons (navigation through the accounting cycle) */
+
+.controls {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+button {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.08s ease, color 0.08s ease, border-color 0.08s ease;
+}
+
+/* Base button styles */
+
+.primary {
+  background: #ffffff;
+  color: #374151;
+  border-color: #d1d5db;
+}
+
+.secondary {
+  background: #ffffff;
+  color: #374151;
+  border-color: #d1d5db;
+}
+
+/* Default primary look: Submit (grade current journal entry) is blue */
+
+#check-btn.primary {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #f9fafb;
+  border-color: transparent;
+}
+
+/* Default Next: outlined blue, used to move to the next step in the cycle */
+
+#next-btn.primary {
+  background: #ffffff;
+  color: #2563eb;
+  border-color: #2563eb;
+}
+
+/* When Next is highlighted after grading, it becomes solid blue */
+
+#next-btn.next-highlight {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #f9fafb;
+  border-color: transparent;
+}
+
+/* When Next is highlighted, submit becomes neutral */
+
+#check-btn.next-inactive {
+  background: #ffffff;
+  color: #374151;
+  border-color: #d1d5db;
+}
+
+/* Click flash behavior for all controls */
+
+button:active {
+  background: #ffffff;
+  color: #374151;
+  border-color: #d1d5db;
+}
+
+/* When Submit itself is pressed, keep it blue while active */
+#check-btn.primary:active {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #f9fafb;
+  border-color: transparent;
+}
+
+/* When Next is pressed, show it blue while active */
+#next-btn:active {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #f9fafb;
+  border-color: transparent;
+}
+
+/* Other buttons also flash blue while pressed */
+button.secondary:active,
+button:not(#check-btn):not(#next-btn):active {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #f9fafb;
+  border-color: transparent;
+}
+
+/* Remove focus outline for a clean look */
+
+button:focus {
+  outline: none;
+}
+
+/* Section guide: maps question ranges to steps in the accounting cycle */
+
+.section-guide {
+  margin-top: 4px;
+  font-size: 11px;
+  color: #8da2c0;  /* dark grayish blue. Original #6b7280 - soft muted gray*/
+  line-height: 1.4;
+}
+
+/* No-entry checkbox for transactions that do not affect the cycle */
+
+.no-entry-wrapper {
+  display: block;
+  margin-top: 8px;
+  font-size: 13px;
+  color: #374151;
+}
+
+/* Feedback and footer: reinforce learning across the cycle */
+
+.feedback {
+  margin-top: 14px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 13px;
+  border: 1px solid transparent;
+  white-space: pre-line;
+}
+
+.feedback.correct {
+  background: #ecfdf5;
+  border-color: #bbf7d0;
+  color: #166534;
+}
+
+.feedback.incorrect {
+  background: #fef2f2;
+  border-color: #fecaca;
+  color: #b91c1c;
+}
+
+.score-summary {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #6b7280;
+  text-align: right;
+}
+
+.app-footer {
+  margin-top: 16px;
+  font-size: 11px;
+  color: #6b7280;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* Disabled state for buttons when navigation is locked */
+
+button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* Main app visibility helper (JS can toggle .hidden on #main-app) */
+
+.main-app {
+  /* visible state is the default; JS manages visibility */
+}
