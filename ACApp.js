@@ -437,9 +437,20 @@ function openFullLedgerWindow() {
         runningBalance > 0
           ? runningBalance.toLocaleString()
           : "(" + Math.abs(runningBalance).toLocaleString() + ")";
+      
+      // Read optional mode from exerciseConfig, default to "beginning"
+      const mode =
+        (typeof exerciseConfig !== "undefined" &&
+         exerciseConfig.startingBalanceLabelMode) || "beginning";
+
+      const labelText =
+        mode === "unadjusted"
+          ? "Unadjusted balance"
+          : "Beginning balance";
+    
       rowPieces.push(`
         <tr>
-          <td>Beginning balance</td>
+          <td>${labelText}</td>
           <td style="text-align:right;"></td>
           <td style="text-align:right;"></td>
           <td style="text-align:right;">${displayBegBal}</td>

@@ -15,8 +15,14 @@ const exerciseConfig = {
   tbEntityName: "Beck Equipment Repair – Trial Balance",
 
   // Mode: \"exercise\" (feedback & grading) or \"test\" (no feedback / grading)
-  // mode: "exercise",
-  mode: "test",
+  mode: "exercise",
+  // mode: "test",
+
+  // How to label the starting balances in the ledger:
+  // "beginning"  → “Beginning balance”
+  // "unadjusted" → “Unadjusted balance”
+  // startingBalanceLabelMode: "unadjusted", // when needed
+  // startingBalanceLabelMode: "beginning", // default, undefined
 
   // Login / initial screen
   useLoginScreen: true,
