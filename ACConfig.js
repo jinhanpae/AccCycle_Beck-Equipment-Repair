@@ -15,8 +15,8 @@ const exerciseConfig = {
   tbEntityName: "Beck Equipment Repair – Trial Balance",
 
   // Mode: \"exercise\" (feedback & grading) or \"test\" (no feedback / grading)
-  mode: "exercise",
-  // mode: "test",
+  // mode: "exercise",
+  mode: "test",
 
   // Login / initial screen
   useLoginScreen: true,
