@@ -1208,7 +1208,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
   if (typeof exerciseConfig !== "undefined") {
     if (appTitleEl) appTitleEl.textContent = exerciseConfig.appTitle || "Accounting Cycle Practice";
-    if (appSubtitleEl) appSubtitleEl.textContent = exerciseConfig.subtitle || "";
+    if (appSubtitleEl) appSubtitleEl.textContent = (exerciseConfig.subtitle || "")
+         + (isTestMode() ? "  [Test Mode]" : "");
     if (loginTitleEl) loginTitleEl.textContent = exerciseConfig.loginTitle || "Accounting Cycle Practice";
     if (loginSubtitleEl) loginSubtitleEl.textContent = exerciseConfig.loginSubtitle || "";
     if (loginPromptEl) loginPromptEl.textContent = exerciseConfig.loginPrompt || "";
